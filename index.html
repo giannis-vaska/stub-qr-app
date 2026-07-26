@@ -536,12 +536,11 @@ let currentDetailId = null;
 // ---------- storage helpers ----------
 async function getSecret(){
   try{
-    const r = await window.storage.get('secret');
-    return r ? r.value : null;
+    return localStorage.getItem('stub_secret');
   }catch(e){ return null; }
 }
 async function setSecret(val){
-  await window.storage.set('secret', val);
+  try{ localStorage.setItem('stub_secret', val); }catch(e){}
 }
 
 // ---------- API ----------
